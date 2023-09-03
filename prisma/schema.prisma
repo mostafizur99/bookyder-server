@@ -43,7 +43,7 @@ model Book {
   author           String
   price            Int
   genre            String
-  publicationDate  DateTime
+  publicationDate  String
   category         Category          @relation(fields: [categoryId], references: [id])
   categoryId       String
   createdAt        DateTime          @default(now())
