@@ -20,7 +20,7 @@ const getUserById = catchAsync(async (req: Request, res: Response) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'User getched successfully',
+    message: 'User fetched successfully',
     data: result,
   });
 });
