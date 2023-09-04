@@ -36,11 +36,22 @@ const getUserById = async (id: string): Promise<IUseResponse | null> => {
   return result;
 };
 
-const getUserProfile = async (user: IAuthUser): Promise<User | null> => {
+const getUserProfile = async (
+  user: IAuthUser
+): Promise<IUseResponse | null> => {
   const { userId } = user;
   const result = await prisma.user.findUnique({
     where: {
       id: userId,
+    },
+    select: {
+      id: true,
+      name: true,
+      email: true,
+      role: true,
+      contactNo: true,
+      address: true,
+      profileImg: true,
     },
   });
 
