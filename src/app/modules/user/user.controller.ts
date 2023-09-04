@@ -3,6 +3,7 @@ import httpStatus from 'http-status';
 import catchAsync from '../../../shared/catchAsync';
 import sendResponse from '../../../shared/sendResponse';
 import { UserService } from './user.service';
+import { IAuthUser } from '../order/order.interface';
 
 const getUsers = catchAsync(async (req: Request, res: Response) => {
   const result = await UserService.getUsers();
@@ -21,6 +22,17 @@ const getUserById = catchAsync(async (req: Request, res: Response) => {
     statusCode: httpStatus.OK,
     success: true,
     message: 'User fetched successfully',
+    data: result,
+  });
+});
+
+const getUserProfile = catchAsync(async (req: Request, res: Response) => {
+  const user = req.user as IAuthUser;
+  const result = await UserService.getUserProfile(user);
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'User retrieved successfully',
     data: result,
   });
 });
@@ -51,6 +63,7 @@ const deleteUser = catchAsync(async (req: Request, res: Response) => {
 export const UserController = {
   getUsers,
   getUserById,
+  getUserProfile,
   updateUser,
   deleteUser,
 };

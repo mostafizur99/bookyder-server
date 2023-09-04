@@ -1,6 +1,7 @@
 import { User } from '@prisma/client';
 import prisma from '../../../shared/prisma';
 import { IUseResponse } from './user.interface';
+import { IAuthUser } from '../order/order.interface';
 
 const getUsers = async (): Promise<IUseResponse[]> => {
   const result = await prisma.user.findMany({
@@ -32,6 +33,17 @@ const getUserById = async (id: string): Promise<IUseResponse | null> => {
       profileImg: true,
     },
   });
+  return result;
+};
+
+const getUserProfile = async (user: IAuthUser): Promise<User | null> => {
+  const { userId } = user;
+  const result = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+
   return result;
 };
 
@@ -78,6 +90,7 @@ const deleteUser = async (id: string): Promise<IUseResponse> => {
 export const UserService = {
   getUsers,
   getUserById,
+  getUserProfile,
   updateUser,
   deleteUser,
 };
