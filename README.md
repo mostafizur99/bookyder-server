@@ -4,7 +4,9 @@
 
 This is a backend server developed with `PostgreSQL`, `Prisma`, `Express.js` having user authentication and some other Routes given below.
 
-### Live Link: https://example.com
+### Live Link: https://bookyder-server.vercel.app/
+
+### [Health check](https://bookyder-server.vercel.app/api/v1/health)
 
 ### Application Routes:
 
