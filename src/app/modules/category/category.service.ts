@@ -1,4 +1,4 @@
-import { Category, User } from '@prisma/client';
+import { Category } from '@prisma/client';
 import prisma from '../../../shared/prisma';
 import { ICategoryResponse } from './category.interface';
 
@@ -29,10 +29,6 @@ const getCategoryById = async (id: string): Promise<Category | null> => {
     where: {
       id,
     },
-    // select: {
-    //   id: true,
-    //   title: true,
-    // },
     include: {
       books: true,
     },
@@ -42,7 +38,7 @@ const getCategoryById = async (id: string): Promise<Category | null> => {
 
 const updateCategory = async (
   id: string,
-  payload: Partial<User>
+  payload: Partial<Category>
 ): Promise<ICategoryResponse> => {
   const result = await prisma.category.update({
     where: {
