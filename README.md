@@ -13,7 +13,7 @@ This is a backend server developed with `PostgreSQL`, `Prisma`, `Express.js` hav
 #### User
 
 - api/v1/auth/signup (POST)
-- api/v1/auth/login (POST)
+- api/v1/auth/signin (POST)
 - api/v1/users (GET)
 - api/v1/users/59160856-f7cd-4a18-a94a-58468a43113e (Single GET)
 - api/v1/users/59160856-f7cd-4a18-a94a-58468a43113e (PATCH)
